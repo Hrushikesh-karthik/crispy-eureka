@@ -8,7 +8,7 @@ app = Flask(__name__)
 app.secret_key = "workshop-secret-key-12345"
 
 # INTENTIONALLY VULNERABLE: demo credentials committed to source.
-ADMIN_USERNAME = "admin"
+ADMIN_USERNAME = "adminn"
 ADMIN_PASSWORD = "Password123!"
 
 DATABASE = "workshop.db"
