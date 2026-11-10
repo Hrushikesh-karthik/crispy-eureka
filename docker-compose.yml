@@ -1,0 +1,7 @@
+services:
+  vulnerable-app:
+    build: .
+    ports:
+      - "5000:5000"
+    # INTENTIONALLY INSECURE: privileged container for workshop scanning.
+    privileged: true

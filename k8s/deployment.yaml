@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: vulnerable-notes
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: vulnerable-notes
+  template:
+    metadata:
+      labels:
+        app: vulnerable-notes
+    spec:
+      # INTENTIONALLY INSECURE: no securityContext / runs as root by default.
+      containers:
+        - name: app
+          image: vulnerable-notes:latest
+          ports:
+            - containerPort: 5000
+          securityContext:
+            privileged: true
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: vulnerable-notes
+spec:
+  selector:
+    app: vulnerable-notes
+  ports:
+    - port: 80
+      targetPort: 5000
+  type: NodePort

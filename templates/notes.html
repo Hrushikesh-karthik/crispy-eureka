@@ -1,0 +1,19 @@
+<!doctype html>
+<html>
+<head><title>Notes</title></head>
+<body>
+  <h1>Notes for {{ owner }}</h1>
+  <form method="post">
+    <textarea name="body" placeholder="Write a note"></textarea>
+    <button type="submit">Save note</button>
+  </form>
+  <ul>
+    {% for note in notes %}
+      <li>{{ note["body"] }}</li>
+    {% else %}
+      <li>No notes yet.</li>
+    {% endfor %}
+  </ul>
+  <p><a href="/dashboard">Back to dashboard</a></p>
+</body>
+</html>
